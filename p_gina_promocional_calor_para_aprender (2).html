@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calor para Aprender - Recaudación de Fondos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Caveat (Handwritten effect) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#003359',
+                            darkBlue: '#052A4A',
+                            emerald: '#00B865',
+                            emeraldHover: '#009D56',
+                            royal: '#0B63CE',
+                            lightBlue: '#EBF4FE',
+                            grayBg: '#F8FAFC',
+                            textDark: '#1E293B',
+                            textMuted: '#64748B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        handwritten: ['Caveat', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .handwriting {
+            font-family: 'Caveat', cursive;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00B865;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-brand-textDark antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="bg-brand-navy text-white sticky top-0 z-40 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="bg-white/10 p-2 rounded-xl group-hover:bg-white/20 transition-all duration-300">
+                    <i class="fa-solid fa-graduation-cap text-2xl text-white"></i>
+                </div>
+                <span class="text-xl sm:text-2xl font-bold tracking-tight text-white">Calor para Aprender</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#hero" class="text-white hover:text-brand-emerald transition-colors pb-1 border-b-2 border-brand-emerald">Inicio</a>
+                <a href="#problema" class="text-gray-200 hover:text-white transition-colors">El proyecto</a>
+                <a href="#como-funciona" class="text-gray-200 hover:text-white transition-colors">Cómo ayudar</a>
+                <a href="javascript:void(0)" onclick="openContactModal()" class="text-gray-200 hover:text-white transition-colors">Contacto</a>
+            </nav>
+
+            <!-- Right Tagline / Badge -->
+            <div class="hidden lg:flex items-center space-x-2 text-xs font-semibold bg-white/10 px-3 py-1.5 rounded-full border border-white/15">
+                <i class="fa-solid fa-heart text-red-400 animate-pulse"></i>
+                <span>Juntos por mejores escuelas</span>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-darkBlue border-t border-white/10 px-4 py-4 space-y-3">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block text-white font-medium py-1">Inicio</a>
+            <a href="#problema" onclick="toggleMobileMenu()" class="block text-gray-300 py-1">El proyecto</a>
+            <a href="#como-funciona" onclick="toggleMobileMenu()" class="block text-gray-300 py-1">Cómo ayudar</a>
+            <a href="javascript:void(0)" onclick="toggleMobileMenu(); openContactModal()" class="block text-gray-300 py-1">Contacto</a>
+            <button onclick="toggleMobileMenu(); openDonateModal()" class="w-full mt-2 bg-brand-emerald hover:bg-brand-emeraldHover text-white font-bold py-2.5 px-4 rounded-xl flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-heart"></i>
+                <span>Haz tu aporte</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- SECTION 01: HERO SECTION -->
+    <section id="hero" class="relative bg-gradient-to-b from-slate-50 to-white pt-8 pb-16 md:py-16 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-6 space-y-5">
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-emerald bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-md">
+                        RECAUDACIÓN DE FONDOS
+                    </span>
+                    
+                    <h1 class="text-4xl sm:text-5xl font-black text-brand-navy leading-tight tracking-tight">
+                        Calor para Aprender
+                    </h1>
+                    
+                    <p class="text-xl sm:text-2xl font-bold text-brand-navy/90 leading-snug">
+                        Porque un buen ambiente también enseña.
+                    </p>
+                    
+                    <p class="text-brand-textMuted text-base sm:text-lg leading-relaxed max-w-xl">
+                        Ayúdanos a conseguir un calefactor para las salas de nuestro colegio. ¡Tu aporte hace la diferencia!
+                    </p>
+
+                    <!-- Primary CTA Button -->
+                    <div class="pt-2">
+                        <button onclick="openDonateModal()" class="group inline-flex items-center space-x-3 bg-brand-emerald hover:bg-brand-emeraldHover text-white font-bold text-lg px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+                            <i class="fa-solid fa-heart text-xl group-hover:scale-110 transition-transform"></i>
+                            <span>Conocer la solución</span>
+                            <i class="fa-solid fa-arrow-right text-base group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Visual Element / Banner Photo -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200 group">
+                        <!-- Classroom Background Image with Heater -->
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=80" alt="Sala de clases bien acondicionada" class="w-full h-[320px] sm:h-[400px] object-cover group-hover:scale-105 transition-transform duration-500">
+                        
+                        <!-- Overlay Graphic: Electric Heater representation -->
+                        <div class="absolute bottom-6 right-6 bg-white/95 backdrop-blur p-4 rounded-xl shadow-2xl border border-gray-100 flex items-center space-x-4 max-w-xs transform hover:scale-105 transition-transform">
+                            <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-brand-emerald text-2xl flex-shrink-0">
+                                <i class="fa-solid fa-radiator"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-brand-emerald uppercase tracking-wider block">Calefactor Moderno</span>
+                                <p class="text-xs text-gray-600 font-medium leading-tight">Espacios cálidos e idóneos para el estudio continuo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Handwritten Note -->
+                        <div class="absolute top-4 right-4 bg-yellow-100/90 backdrop-blur border border-yellow-300 text-slate-800 p-3 rounded-xl shadow-md rotate-3 max-w-[180px] hidden sm:block">
+                            <p class="handwriting text-xl leading-tight font-bold text-center text-amber-900">
+                                Calor hoy, mejores oportunidades mañana ☀️
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: PROBLEMA -->
+    <section id="problema" class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Text Side -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-10 h-10 rounded-full bg-brand-royal text-white font-bold text-lg flex items-center justify-center flex-shrink-0">
+                            02
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-royal tracking-tight">
+                            PROBLEMA
+                        </h2>
+                    </div>
+
+                    <p class="text-slate-700 text-base sm:text-lg leading-relaxed">
+                        Muchos colegios y liceos no cuentan con los recursos suficientes para mantener sus salas temperadas en invierno. Esto afecta la concentración, el bienestar y el rendimiento de los estudiantes.
+                    </p>
+
+                    <!-- Alert / Callout Box -->
+                    <div class="bg-blue-50/80 border-l-4 border-brand-royal p-4 rounded-r-xl flex items-start space-x-4">
+                        <div class="text-brand-royal text-2xl pt-1">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <p class="text-sm sm:text-base text-brand-navy font-semibold leading-snug">
+                            En Chile, miles de estudiantes estudian en salas frías, lo que impacta en su aprendizaje y salud.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Image + Handwritten Note -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80" alt="Estudiantes en sala de clases con frío" class="w-full h-[280px] sm:h-[340px] object-cover">
+                        
+                        <!-- Floating Hand Drawn Annotation -->
+                        <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur px-5 py-3 rounded-2xl shadow-xl border border-slate-200 -rotate-2 max-w-[240px]">
+                            <p class="handwriting text-2xl text-blue-900 leading-tight font-bold text-center">
+                                El frío también es una barrera para aprender ✨
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 03: SOLUCIÓN -->
+    <section id="solucion" class="py-16 bg-slate-50 border-t border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Text Side -->
+                <div class="lg:col-span-6 space-y-6 order-2 lg:order-1">
+                    <div class="flex items-center space-x-3">
+                        <span class="w-10 h-10 rounded-full bg-brand-royal text-white font-bold text-lg flex items-center justify-center flex-shrink-0">
+                            03
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-royal tracking-tight">
+                            SOLUCIÓN
+                        </h2>
+                    </div>
+
+                    <p class="text-slate-700 text-base sm:text-lg leading-relaxed">
+                        Nuestra propuesta es recaudar fondos para comprar e instalar un calefactor en la sala de clases. Así, podremos entregar un ambiente más cálido y cómodo, ayudando a que todos los estudiantes puedan aprender y desarrollarse mejor.
+                    </p>
+
+                    <button onclick="openDonateModal()" class="inline-flex items-center space-x-2 text-brand-emerald font-bold hover:text-brand-emeraldHover hover:underline text-lg">
+                        <span>Aporta hoy a la solución</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Right Graphics Illustration Block -->
+                <div class="lg:col-span-6 order-1 lg:order-2">
+                    <div class="bg-emerald-50/60 rounded-3xl p-8 border border-emerald-100 flex flex-col sm:flex-row items-center justify-center gap-6 text-center sm:text-left relative overflow-hidden">
+                        
+                        <!-- Heater SVG Icon Box -->
+                        <div class="w-32 h-32 bg-white rounded-2xl shadow-md border border-emerald-200 flex flex-col items-center justify-center p-4 relative flex-shrink-0 group hover:scale-105 transition-transform">
+                            <!-- Heat Wave Lines Icon -->
+                            <div class="flex justify-center space-x-1.5 mb-2 text-emerald-500">
+                                <i class="fa-solid fa-fire text-lg animate-bounce" style="animation-delay: 0s;"></i>
+                                <i class="fa-solid fa-fire text-lg animate-bounce" style="animation-delay: 0.2s;"></i>
+                                <i class="fa-solid fa-fire text-lg animate-bounce" style="animation-delay: 0.4s;"></i>
+                            </div>
+                            <i class="fa-solid fa-box text-4xl text-slate-700"></i>
+                            <span class="text-[10px] font-bold text-slate-400 mt-2">CALEFACTOR 2000W</span>
+                        </div>
+
+                        <!-- Handwritten text callout -->
+                        <div class="space-y-1">
+                            <p class="handwriting text-3xl sm:text-4xl text-emerald-800 leading-tight font-bold">
+                                Un pequeño aporte, un gran cambio. 🌱
+                            </p>
+                            <p class="text-xs text-slate-500 font-medium">Cada aporte se transforma directamente en calor para los niños.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: BENEFICIOS -->
+    <section id="beneficios" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <!-- Section Header -->
+            <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-full bg-brand-royal text-white font-bold text-lg flex items-center justify-center flex-shrink-0">
+                    04
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-royal tracking-tight">
+                    BENEFICIOS
+                </h2>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Benefit 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 text-center space-y-4 group">
+                    <div class="w-16 h-16 mx-auto bg-emerald-100 text-brand-emerald rounded-full flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-temperature-arrow-up"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy">Mejor bienestar</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Mantiene una temperatura adecuada en la sala, cuidando la salud de todos los estudiantes y evitando enfermedades invernales.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 text-center space-y-4 group">
+                    <div class="w-16 h-16 mx-auto bg-blue-100 text-brand-royal rounded-full flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-brand-royal group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy">Mayor concentración</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Un ambiente cálido ayuda a que los estudiantes se enfoquen sin distracciones climáticas y aprendan mucho mejor.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 text-center space-y-4 group">
+                    <div class="w-16 h-16 mx-auto bg-emerald-100 text-brand-emerald rounded-full flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy">Uso eficiente de energía</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Calefactores modernos y seguros, con <span class="underline decoration-brand-emerald decoration-2">bajo consumo eléctrico</span> y mayor eficiencia térmica.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05: CÓMO FUNCIONA -->
+    <section id="como-funciona" class="py-16 bg-blue-50/50 border-t border-b border-blue-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <!-- Section Header -->
+            <div class="flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-full bg-brand-royal text-white font-bold text-lg flex items-center justify-center flex-shrink-0">
+                    05
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-royal tracking-tight">
+                    CÓMO FUNCIONA
+                </h2>
+            </div>
+
+            <!-- Steps Flow -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                
+                <!-- Step 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 relative space-y-4 hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between">
+                        <span class="w-9 h-9 rounded-full bg-brand-emerald text-white font-bold text-sm flex items-center justify-center">1</span>
+                        <div class="text-brand-emerald text-3xl">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy">Haz tu aporte</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Puedes donar desde <strong>$1.000</strong> o el monto que prefieras. Todo suma para alcanzar la meta.
+                    </p>
+                    <button onclick="openDonateModal()" class="w-full py-2 bg-emerald-50 text-brand-emerald font-bold text-xs rounded-lg hover:bg-brand-emerald hover:text-white transition-colors">
+                        Donar ahora
+                    </button>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 relative space-y-4 hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between">
+                        <span class="w-9 h-9 rounded-full bg-brand-royal text-white font-bold text-sm flex items-center justify-center">2</span>
+                        <div class="text-brand-royal text-3xl">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy">Compra e instalación</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Con los fondos recaudados adquiriremos el calefactor de alta eficiencia y lo instalaremos en la sala.
+                    </p>
+                    <div class="py-2 bg-slate-50 text-slate-500 font-semibold text-xs rounded-lg text-center">
+                        Transparencia garantizada
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 relative space-y-4 hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center justify-between">
+                        <span class="w-9 h-9 rounded-full bg-brand-emerald text-white font-bold text-sm flex items-center justify-center">3</span>
+                        <div class="text-brand-emerald text-3xl">
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-navy">Disfruta el cambio</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        La sala estará más cálida y todos podrán aprender en mejores condiciones desde el primer día.
+                    </p>
+                    <div class="py-2 bg-emerald-50 text-brand-emerald font-semibold text-xs rounded-lg text-center">
+                        ¡Impacto inmediato!
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Handwritten Callout at the bottom of steps -->
+            <div class="text-center pt-4">
+                <span class="handwriting text-3xl sm:text-4xl text-brand-royal font-bold inline-block rotate-1">
+                    ¡Es así de simple! ⚡
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 06: LLAMADO A LA ACCIÓN (CTA BANNER) -->
+    <section id="contacto" class="py-16 bg-brand-navy text-white relative overflow-hidden">
+        <!-- Subtle decorative glow -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-emerald/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                
+                <!-- Left Info -->
+                <div class="space-y-4 text-center md:text-left max-w-2xl">
+                    <div class="flex items-center justify-center md:justify-start space-x-3">
+                        <span class="w-9 h-9 rounded-full bg-white text-brand-navy font-extrabold text-sm flex items-center justify-center">
+                            06
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                            LLAMADO A LA ACCIÓN
+                        </h2>
+                    </div>
+
+                    <p class="text-lg sm:text-xl text-slate-200 leading-relaxed">
+                        Tu apoyo puede hacer que este proyecto se haga realidad. ¡Contribuye, comparte y ayúdanos a que más estudiantes aprendan en un ambiente cálido y seguro!
+                    </p>
+                </div>
+
+                <!-- Right CTA Button & Note -->
+                <div class="flex flex-col items-center space-y-4 flex-shrink-0">
+                    <button onclick="openDonateModal()" class="group inline-flex items-center space-x-3 bg-brand-emerald hover:bg-brand-emeraldHover text-white font-extrabold text-xl px-8 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-200">
+                        <i class="fa-solid fa-heart text-2xl group-hover:scale-125 transition-transform"></i>
+                        <span>Haz tu aporte ahora</span>
+                        <i class="fa-solid fa-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+
+                    <span class="handwriting text-2xl text-emerald-300 font-bold -rotate-2">
+                        Juntos logramos más 🤝
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-darkBlue text-slate-400 py-8 border-t border-white/10 text-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <!-- Brand -->
+            <div class="flex items-center space-x-2 text-white font-semibold">
+                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                <span>Calor para Aprender</span>
+            </div>
+
+            <!-- Copyright or message -->
+            <div class="flex items-center space-x-2 text-slate-300 text-xs sm:text-sm">
+                <i class="fa-solid fa-heart text-red-500"></i>
+                <span>Tu aporte también es educación</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- MODAL 1: DONATE / APORTE INTERACTIVO -->
+    <div id="donateModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative transform transition-all scale-100">
+            <!-- Close Button -->
+            <button onclick="closeDonateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Modal Content -->
+            <div class="text-center space-y-4">
+                <div class="w-16 h-16 bg-emerald-100 text-brand-emerald rounded-full flex items-center justify-center mx-auto text-3xl">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+
+                <h3 class="text-2xl font-bold text-brand-navy">Haz tu aporte</h3>
+                <p class="text-slate-600 text-sm">Selecciona o ingresa el monto con el que deseas colaborar para el calefactor de la sala.</p>
+
+                <!-- Predefined Amounts -->
+                <div class="grid grid-cols-3 gap-3 my-4">
+                    <button onclick="selectAmount(1000)" class="amount-btn border-2 border-slate-200 hover:border-brand-emerald py-2.5 rounded-xl font-bold text-slate-700 hover:text-brand-emerald hover:bg-emerald-50 transition-all text-sm">
+                        $1.000
+                    </button>
+                    <button onclick="selectAmount(5000)" class="amount-btn border-2 border-slate-200 hover:border-brand-emerald py-2.5 rounded-xl font-bold text-slate-700 hover:text-brand-emerald hover:bg-emerald-50 transition-all text-sm">
+                        $5.000
+                    </button>
+                    <button onclick="selectAmount(10000)" class="amount-btn border-2 border-slate-200 hover:border-brand-emerald py-2.5 rounded-xl font-bold text-slate-700 hover:text-brand-emerald hover:bg-emerald-50 transition-all text-sm">
+                        $10.000
+                    </button>
+                </div>
+
+                <!-- Custom Amount Input -->
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-slate-400">$</span>
+                    <input type="number" id="customAmount" placeholder="Otro monto (ej. 2000)" class="w-full pl-9 pr-4 py-3 rounded-xl border border-slate-300 focus:border-brand-emerald focus:ring-2 focus:ring-emerald-200 outline-none font-semibold text-slate-800">
+                </div>
+
+                <!-- Submit Button -->
+                <button onclick="processDonation()" class="w-full bg-brand-emerald hover:bg-brand-emeraldHover text-white font-extrabold py-3.5 rounded-xl shadow-lg transition-all text-base flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Confirmar y Donar</span>
+                </button>
+
+                <p class="text-[11px] text-slate-400">Proceso 100% seguro y transparente.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CONTACTO -->
+    <div id="contactModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-slate-100">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="space-y-4">
+                <div class="flex items-center space-x-3 text-brand-navy">
+                    <i class="fa-solid fa-envelope text-2xl text-brand-emerald"></i>
+                    <h3 class="text-2xl font-bold">Contacto</h3>
+                </div>
+                <p class="text-slate-600 text-sm">¿Tienes dudas o deseas aportar de otra forma? Escríbenos directamente.</p>
+
+                <form onsubmit="submitContact(event)" class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Nombre Completo</label>
+                        <input type="text" required placeholder="Tu nombre" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-emerald outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Correo Electrónico</label>
+                        <input type="email" required placeholder="correo@ejemplo.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-emerald outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Mensaje</label>
+                        <textarea rows="3" required placeholder="¿En qué podemos ayudarte?" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-brand-emerald outline-none text-sm resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-navy hover:bg-brand-darkBlue text-white font-bold py-3 rounded-xl shadow transition-all text-sm">
+                        Enviar mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-brand-navy text-white px-5 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 border border-white/20 max-w-sm">
+        <div class="w-10 h-10 rounded-full bg-brand-emerald flex items-center justify-center text-white text-lg flex-shrink-0">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm text-white" id="toastTitle">¡Gracias!</h4>
+            <p class="text-xs text-slate-200" id="toastMessage">Tu acción se ha realizado con éxito.</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTIVITY -->
+    <script>
+        // Mobile Navigation Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Donate Modal Handlers
+        function openDonateModal() {
+            document.getElementById('donateModal').classList.remove('hidden');
+        }
+
+        function closeDonateModal() {
+            document.getElementById('donateModal').classList.add('hidden');
+        }
+
+        // Contact Modal Handlers
+        function openContactModal() {
+            document.getElementById('contactModal').classList.remove('hidden');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.add('hidden');
+        }
+
+        // Select Predefined Donation Amount
+        function selectAmount(amount) {
+            document.getElementById('customAmount').value = amount;
+            
+            // Visual feedback on buttons
+            const buttons = document.querySelectorAll('.amount-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(amount.toLocaleString())) {
+                    btn.classList.add('bg-brand-emerald', 'text-white', 'border-brand-emerald');
+                    btn.classList.remove('text-slate-700', 'hover:bg-emerald-50');
+                } else {
+                    btn.classList.remove('bg-brand-emerald', 'text-white');
+                    btn.classList.add('text-slate-700');
+                }
+            });
+        }
+
+        // Process Donation Simulation
+        function processDonation() {
+            const amount = document.getElementById('customAmount').value;
+            if (!amount || amount <= 0) {
+                showToast('Por favor ingresa un monto válido', 'Selecciona o escribe el valor de tu aporte.', false);
+                return;
+            }
+
+            closeDonateModal();
+            showToast('¡Aporte Recibido!', `Muchas gracias por colaborar con $${parseInt(amount).toLocaleString('es-CL')} para las salas de clases.`);
+            document.getElementById('customAmount').value = '';
+        }
+
+        // Submit Contact Form
+        function submitContact(event) {
+            event.preventDefault();
+            closeContactModal();
+            showToast('Mensaje Enviado', 'Nos pondremos en contacto contigo a la brevedad.');
+        }
+
+        // Toast Notification System
+        function showToast(title, message, success = true) {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMessage = document.getElementById('toastMessage');
+
+            toastTitle.innerText = title;
+            toastMessage.innerText = message;
+
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
